@@ -1,0 +1,147 @@
+.hero__section {
+  background-color: var(--hero-bg);
+  /* filter: hue-rotate(230deg); */
+  padding: 0 94px;
+  /* Đổi màu sang màu xanh lá cây */
+}
+
+/* .gallery.hidden,
+.hero__content.hidden,
+.hero__image.hidden {
+  column-gap: 2rem;
+  opacity: 0;
+  filter: blur(5px);
+  transition: all 1s;
+  transform: translateY(10%);
+}
+
+.gallery.show,
+.hero__content.show,
+.hero__image.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+} */
+
+.hero__container {
+  position: relative;
+  display: flex;
+  top: 100px;
+}
+
+.hero__image {
+  position: relative;
+  margin-left: 80px;
+}
+
+.hero__image img {
+  animation: 5s animation ease-in-out infinite 1s;
+}
+
+@keyframes animation {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.hero__content {
+  margin-top: 50px;
+}
+
+.hero__section h2 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 20px 0px;
+}
+
+.hero__section p:nth-child(1) {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.hero__section p {
+  color: var(--primary-color);
+  line-height: 28px;
+}
+
+.buy__btn {
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 40px;
+  box-shadow: 1px 3px 3px #444;
+  transition: 0.3s;
+}
+
+.buy__btn:hover {
+  transform: translateY(2px);
+  background-color: #1d1d1d;
+  box-shadow: 0px 0px 0px #444;
+}
+
+.buy__btn:hover a {
+  color: #fff;
+}
+
+.hero__content p:first-child {
+  font-size: 20px;
+}
+
+.home__subtitle {
+  position: relative;
+  font-weight: normal;
+  margin-left: 4rem;
+  width: 280px;
+  color: gray;
+}
+
+.home__subtitle::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 1px;
+  background-color: var(--main-color);
+  left: -4rem;
+  top: 1rem;
+}
+
+.home__subtitle::before {
+  content: attr(data-text);
+  position: absolute;
+  color: var(--text-animation);
+  width: 100%;
+  text-shadow: 0px 1px 2px var(--text-animation);
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #fff;
+  animation: animate 6s linear infinite;
+  /* width: 60px;
+      height: 1px;
+      background-color: var(--text-color);
+      left: -4rem;
+      top: 1rem; */
+}
+
+@keyframes animate {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+  70%,
+  90% {
+    width: 100%;
+  }
+}
