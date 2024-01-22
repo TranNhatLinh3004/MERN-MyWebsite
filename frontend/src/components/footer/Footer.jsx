@@ -14,8 +14,8 @@ function Footer(props) {
       display: "About",
     },
     {
-      path: "tour",
-      display: "Tour",
+      path: "blog",
+      display: "Blog",
     },
   ];
 
@@ -39,8 +39,8 @@ function Footer(props) {
         <div className="footer__one footer">
           <div className="logo">{/* <img src={logo} alt="" /> */}</div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perspiciatis molestiae eaque repellendus et est aperiam.
+            Discover comfort and style with our handcrafted furniture. Elevate
+            your space with our curated collection designed for modern living.
           </p>
 
           <div className="social__link">
@@ -76,7 +76,12 @@ function Footer(props) {
             </span>{" "}
             <span>
               <NavLink>
-                <i class="uil uil-github"></i>
+                <i
+                  class="uil uil-github"
+                  style={{
+                    color: "black",
+                  }}
+                ></i>
               </NavLink>
             </span>
           </div>
@@ -112,30 +117,30 @@ function Footer(props) {
           <h5 className="footer__link-title">Contact</h5>
           <ListGroup className="footer__quick-links">
             <ListGroupItem className="GroupItem ">
-              <h5>
+              <p>
                 <span>
                   <i class="uil uil-location-point"></i>
                 </span>
                 Address:
-              </h5>
+              </p>
               <p>Da Nang </p>
             </ListGroupItem>{" "}
             <ListGroupItem className="GroupItem">
-              <h5>
+              <p>
                 <span>
                   <i class="uil uil-location-point"></i>
                 </span>
                 Address:
-              </h5>
+              </p>
               <p>Nha Trang </p>
             </ListGroupItem>{" "}
             <ListGroupItem className="GroupItem">
-              <h5>
+              <p>
                 <span>
                   <i class="uil uil-location-point"></i>
                 </span>
                 Address:
-              </h5>
+              </p>
               <p> Ha Noi</p>
             </ListGroupItem>
           </ListGroup>

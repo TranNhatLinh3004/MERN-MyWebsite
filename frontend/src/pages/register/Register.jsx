@@ -59,6 +59,7 @@ function Register(props) {
         headers: { "Content-Type": "application/json" },
         // credentials: "include", // Chỉnh sửa "Content Type" thành "Content-Type"
       });
+      const responseData = await response.json();
       if (response.ok) {
         toast.success(
           "You are registered in successfully. Welcome " +
@@ -67,7 +68,15 @@ function Register(props) {
         // Xử lý khi yêu cầu thành công
         setRedirect(true);
       } else {
-        toast.error("User Exited.Please try again.");
+        if (responseData.error === "User Already Exists") {
+          toast.error("User Already Exists. Please try again.");
+        } else if (
+          responseData.error === "Password must have at least 6 characters"
+        ) {
+          toast.error("Password must have at least 6 characters");
+        } else {
+          toast.error("Unknown error occurred. Please try again.");
+        }
       }
     } catch (error) {
       setRedirect(false);

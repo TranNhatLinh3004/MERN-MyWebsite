@@ -21,6 +21,9 @@
   --lightgreen-color: rgb(115, 207, 9);
   --text-animation: chartreuse;
   --line-text: #333;
+  --service-text: #0a1d37;
+  --shadow-color: #cac1c1cf;
+  --footer-color: #0a1d37;
 }
 
 /* reset browser default */
@@ -60,6 +63,10 @@ body {
   --span-text-color: #868686;
   --text-animation: rgb(0, 200, 133);
   --line-text: #333;
+  --service-text: black;
+  --service-icon: black;
+  --footer-color: #0a1d37;
+  --shadow-color: #cac1c1cf;
 }
 
 .dark-theme {
@@ -67,11 +74,15 @@ body {
   --text-animation: rgb(0, 200, 133);
   --span-text-color: #fff;
   --heading-text-color: #0a1d37;
+  --service-text: black;
   --bg-01: #242526;
   --primary-color: #fff;
   --container-color: #1d1d1d;
   --logo-color: chartreuse;
   --title-color-dark: chartreuse;
+  --service-icon: #fff;
+  --footer-color: #242526;
+  --shadow-color: #303030;
 }
 
 h1,
@@ -107,4 +118,5 @@ a {
 
 section {
   padding: 60px 0px;
+  /* min-height: 50vh; */
 }

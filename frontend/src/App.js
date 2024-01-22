@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import "./App.css";
-import Layout from "./layout/Layout";
 import { useDispatch } from "react-redux";
 import { login } from "./redux/slices/userSlice";
+import Layout from "./components/layout/Layout";
 
 function App() {
   const dispatch = useDispatch();

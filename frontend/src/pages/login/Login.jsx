@@ -120,6 +120,14 @@ function Login(props) {
                     )}
                   </span>
                 </FormGroup>
+                <p
+                  className="page-link"
+                  style={{
+                    marginBottom: "10px",
+                  }}
+                >
+                  <Link to="/forgotPassword">Forgot Password?</Link>
+                </p>
                 <button>
                   <span class="circle1"></span>
                   <span class="circle2"></span>

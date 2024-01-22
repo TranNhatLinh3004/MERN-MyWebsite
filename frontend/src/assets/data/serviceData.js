@@ -1,27 +1,27 @@
 const serviceData = [
   {
-    icon: "ri-truck-line",
+    icon: "uil uil-truck",
     title: "Free Shipping",
     subtitle: "Lorem ipsum dolor sit amet.",
-    bg: "#fdefe6",
+    bg: "#e2f2b2",
   },
   {
-    icon: "ri-refresh-line",
+    icon: "uil uil-history",
     title: "Easy Returns",
     subtitle: "Lorem ipsum dolor sit amet.",
-    bg: "#ceebe9",
+    bg: "#e2f2b2",
   },
   {
-    icon: "ri-secure-payment-line",
+    icon: "uil uil-shield",
     title: "Secure Payment",
     subtitle: "Lorem ipsum dolor sit amet.",
     bg: "#e2f2b2",
   },
   {
-    icon: "ri-exchange-dollar-line",
+    icon: "uil uil-usd-circle",
     title: " Back Guarantee",
     subtitle: "Lorem ipsum dolor sit amet.",
-    bg: "#d6e5fb",
+    bg: "#e2f2b2",
   },
 ];
 
