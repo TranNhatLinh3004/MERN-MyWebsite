@@ -1,31 +1,53 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 require("dotenv").config();
+const cors = require("cors");
+const connectDB = require("./database.config");
+const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const bodyParser = require("body-parser");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+// const multer = require("multer");
 
-var app = express();
+const app = express();
+app.use(cors());
+require("dotenv").config(); // Tải biến môi trường từ tệp .env
 
+connectDB(); // Kết nối với cơ sở dữ liệu bằng cách sử dụng cấu hình cơ sở dữ liệu của bạn
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(express.json({ limit: "10mb" }));
+
+app.use("/auth", authRoute);
+app.use("/users", userRoute);
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+// const storage = multer.diskStorage({
+//   destination: (req, file, cd) => {
+//     cd(null, "uploads/");
+//   },
 
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname);
+//   },
+// });
+
+// const upload = multer({ storage });
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-  console.log(`Máy chủ đang chạy trên cổng ${port}`);
+    console.log(`Máy chủ đang chạy trên cổng ${port}`);
 });
 module.exports = app;
