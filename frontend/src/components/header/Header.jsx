@@ -139,6 +139,9 @@ function Header(props) {
     event.stopPropagation();
     setIsSearchVisible(true);
   };
+  const handleSearchVisible = (isVisible) => {
+    setIsSearchVisible(isVisible);
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -213,7 +216,10 @@ function Header(props) {
               {" "}
               {isSearchVisible && (
                 <div className="wrapper__box" ref={searchRef}>
-                  <SearchResults value={searchTerm} />
+                  <SearchResults
+                    value={searchTerm}
+                    onSearchVisible={handleSearchVisible}
+                  />
                 </div>
               )}
             </>
@@ -231,75 +237,7 @@ function Header(props) {
             <i class="uil uil-shopping-cart-alt"></i>
             <span className="badge">0</span>
           </span>{" "}
-          <div className="">
-            {/* <NavLink to="/account">
-                  <motion.img
-                    whileTap={{ scale: 1.2 }}
-                    src={userData.avatar ? userData.avatar : userIcon}
-                    alt=""
-                    // onClick={toggleProfileActions}
-                    // ref={profileActionRef}
-                  />
-                </NavLink> */}
-
-            {userData.username ? (
-              <UserMenu />
-            ) : (
-              <div>
-                <span style={{ marginRight: "10px" }}>
-                  <NavLink
-                    to="/login"
-                    activeClassName="active"
-                    className="color-link"
-                  >
-                    Đăng nhập
-                  </NavLink>
-                </span>
-                <NavLink
-                  to="/register"
-                  activeClassName="active"
-                  className="color-link"
-                >
-                  Đăng ký
-                </NavLink>
-              </div>
-            )}
-            {/* 
-                <div
-                  className="profile__actions"
-                  // ref={profileActionRef}
-                  // onClick={toggleProfileActions}
-                >
-                  {userData.avatar ? (
-                    <NavLink
-                      onClick={handleLogout}
-                      className=""
-                      style={{ marginRight: "30px" }}
-                    >
-                      Logout
-                    </NavLink>
-                  ) : (
-                    <div>
-                      <span style={{ marginRight: "10px" }}>
-                        <NavLink
-                          to="/login"
-                          activeClassName="active"
-                          className="color-link"
-                        >
-                          Login
-                        </NavLink>
-                      </span>
-                      <NavLink
-                        to="/register"
-                        activeClassName="active"
-                        className="color-link"
-                      >
-                        Register
-                      </NavLink>
-                    </div>
-                  )}
-                </div> */}
-          </div>
+          <div className=""></div>
         </div>
       </div>
       <div className="nav__desktop">
