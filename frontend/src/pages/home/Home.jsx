@@ -24,22 +24,22 @@ import Clock from "../../components/UI/clock/Clock";
 import ProductSpecial from "../../components/UI/productspecical/ProductSpecial";
 
 const slideData = [
-  // {
-  //   image: banner01,
-  //   alt: "Slide 1",
-  // },
+  {
+    image: banner01,
+    alt: "Slide 1",
+  },
   {
     image: banner02,
     alt: "Slide 2",
   },
-  // {
-  //   image: banner03,
-  //   alt: "Slide 3",
-  // },
-  // {
-  //   image: banner04,
-  //   alt: "Slide 4",
-  // },
+  {
+    image: banner03,
+    alt: "Slide 3",
+  },
+  {
+    image: banner04,
+    alt: "Slide 4",
+  },
 ];
 const SampleNextArrow = (props) => {
   const { onClick } = props;

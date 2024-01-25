@@ -4,40 +4,81 @@ import { Col, Container, Row } from "reactstrap";
 import Helmet from "../../assets/helmet/Helmet";
 import products from "../../assets/data/products";
 import bannershop from "../../assets/images/bannershop.jpg";
-
+import { Link, useParams } from "react-router-dom";
 import ProductItem from "../../components/UI/productitem/ProductItem";
 // import ProductItem from "../../components/UI/productitem/ProductItem";
 
 function Shop(props) {
+  const { category } = useParams();
+
+  console.log("HHH", category);
+
   const [productsData, setProductsData] = useState(products);
   const [search, setSearch] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    // Nếu category tồn tại, lọc danh sách sản phẩm theo điều kiện
+    if (category) {
+      let filteredProducts;
+
+      if (category.toLowerCase() === "sofa-ghe") {
+        // Nếu category là 'sofa-ghe', hiển thị tất cả sản phẩm
+        filteredProducts = products;
+      } else if (category.toLowerCase() === "ghe") {
+        // Nếu category là 'ghe', hiển thị sản phẩm có category là 'chair'
+        filteredProducts = products.filter(
+          (product) => product.category.toLowerCase() === "chair"
+        );
+      } else if (category.toLowerCase() === "sale") {
+        // Nếu category là 'ghe', hiển thị sản phẩm có category là 'chair'
+        filteredProducts = products.filter(
+          (product) => product.onSale === true
+        );
+      } else {
+        // Ngược lại, lọc theo điều kiện thông thường
+        filteredProducts = products.filter(
+          (product) =>
+            product.productName
+              .toLowerCase()
+              .includes(category.toLowerCase()) ||
+            product.category.toLowerCase().includes(category.toLowerCase())
+        );
+      }
+
+      setProductsData(filteredProducts);
+    } else {
+      // Nếu category không tồn tại, hiển thị tất cả sản phẩm
+      setProductsData(products);
+    }
+  }, [category, products]);
+
   const handleFilter = (e) => {
     let val = e.target.value;
     let sortedProducts;
 
     switch (val) {
       case "tang":
-        sortedProducts = [...products].sort((a, b) => a.price - b.price);
+        sortedProducts = [...productsData].sort((a, b) => a.price - b.price);
         break;
       case "giam":
-        sortedProducts = [...products].sort((a, b) => b.price - a.price);
+        sortedProducts = [...productsData].sort((a, b) => b.price - a.price);
         break;
       case "a-z":
-        sortedProducts = [...products].sort((a, b) =>
+        sortedProducts = [...productsData].sort((a, b) =>
           a.productName.toLowerCase().localeCompare(b.productName.toLowerCase())
         );
         break;
       case "z-a":
-        sortedProducts = [...products].sort((a, b) =>
+        sortedProducts = [...productsData].sort((a, b) =>
           b.productName.toLowerCase().localeCompare(a.productName.toLowerCase())
         );
         break;
       case "all":
       default:
-        sortedProducts = [...products];
+        sortedProducts = [...productsData];
         break;
     }
 
@@ -67,7 +108,7 @@ function Shop(props) {
                 <a href="">Sản phẩm mới</a>
               </li>{" "}
               <li>
-                <a href="">Sản phẩm khuyến mãi</a>
+                <Link to="/collections/sale">Sản phẩm khuyến mãi</Link>
               </li>
             </ul>
             <h3 className="subtitle">Nhà cung cấp</h3>

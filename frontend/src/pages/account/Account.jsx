@@ -43,7 +43,7 @@ export const Account = () => {
     <Helmet title="Account">
       <section className="accountInfo">
         <div className="container boxItems">
-          <h1>Account Information</h1>
+          <h1>Hồ Sơ Của Tôi</h1>
           <div className="content">
             <div className="left">
               <div className="img flexCenter">
@@ -57,7 +57,7 @@ export const Account = () => {
             </div>
             <Form className="right" onSubmit={handleUpdate}>
               <FormGroup>
-                <label htmlFor="">Username</label>
+                <label htmlFor="">Tên đăng nhập</label>
                 <input
                   type="text"
                   value={userData.username}
@@ -81,7 +81,7 @@ export const Account = () => {
                 <span class="circle3"></span>
                 <span class="circle4"></span>
                 <span class="circle5"></span>
-                <span class="text">Update</span>
+                <span class="text">Cập nhập</span>
               </button>
             </Form>
           </div>

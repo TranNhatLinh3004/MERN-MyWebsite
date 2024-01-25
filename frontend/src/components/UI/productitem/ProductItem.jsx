@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import saleImg from "../../../assets/images/sale.jpg";
 import { useDispatch } from "react-redux";
-// import { cartActives } from "../../../redux/slices/cartSlice";
+import { cartActives } from "../../../redux/slices/cartSlice";
 
 import { ToastContainer, toast } from "react-toastify";
 function ProductItem(props) {
@@ -34,16 +34,16 @@ function ProductItem(props) {
 
   const randomPercentage = getRandomPercentage();
   const addToCart = () => {
-    // dispatch(
-    //   cartActives.addItem({
-    //     id: props.item.id,
-    //     productName: props.item.productName,
-    //     imgUrl: props.item.imgUrl,
-    //     price: props.item.price,
-    //     quantity: 1,
-    //   })
-    // );
-    // toast.success("Item added to cart");
+    dispatch(
+      cartActives.addItem({
+        id: props.item.id,
+        productName: props.item.productName,
+        imgUrl: props.item.imgUrl,
+        price: props.item.price,
+        quantity: 1,
+      })
+    );
+    toast.success("Đã thêm vào giỏ thành công!");
   };
   return (
     <Col lg="3" md="4" className="mb-2">
@@ -110,7 +110,7 @@ function ProductItem(props) {
               </strike>
             )}
           </span>
-          <button className="btn__buy">
+          <button className="btn__buy" onClick={addToCart}>
             THÊM VÀO GIỎ
             <div>
               <i class="uil uil-shopping-bag"></i>

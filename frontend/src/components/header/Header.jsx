@@ -15,15 +15,15 @@ const nav__links = [
     display: "Sản phẩm",
   },
   {
-    path: "about",
+    path: "bo-suu-tap",
     display: "Bộ sưu tập",
   },
   {
-    path: "noi-that",
+    path: "/noi-that",
     display: "Thiết kế nội thất",
   },
   {
-    path: "about",
+    path: "/goc-cam-hung",
     display: "Góc cảm hứng",
   },
 ];
@@ -55,6 +55,7 @@ const policy_lists = [
 ];
 
 function Header(props) {
+  const dispatch = useDispatch();
   const [prevScroll, setPrevScroll] = useState(window.pageYOffset);
   const [visible, setVisible] = useState(true);
 
@@ -79,7 +80,6 @@ function Header(props) {
   // const currentUser = useSelector((state) => state.user.currentUser);
   const userData = useSelector((state) => state.user);
   console.log("header", userData);
-  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const navigateToCart = () => {
@@ -114,6 +114,10 @@ function Header(props) {
   const [theme, setTheme] = useState(
     storedTheme === "dark-theme" ? "light-theme" : "dark-theme"
   );
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  useEffect(() => {
+    localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
+  }, [totalQuantity]);
 
   // const handleClick = () => setMenu(!menu);
   const handleClick = () => {
@@ -235,9 +239,37 @@ function Header(props) {
           </span>
           <span className="cart__icon" onClick={navigateToCart}>
             <i class="uil uil-shopping-cart-alt"></i>
-            <span className="badge">0</span>
+            <span className="badge">{totalQuantity}</span>
           </span>{" "}
-          <div className=""></div>
+          <div
+            className=""
+            style={{
+              zIndex: "1001",
+            }}
+          >
+            {userData.username ? (
+              <UserMenu />
+            ) : (
+              <div>
+                <span style={{ marginRight: "10px" }}>
+                  <NavLink
+                    to="/login"
+                    activeClassName="active"
+                    className="color-link"
+                  >
+                    Đăng nhập
+                  </NavLink>
+                </span>
+                <NavLink
+                  to="/register"
+                  activeClassName="active"
+                  className="color-link"
+                >
+                  Đăng ký
+                </NavLink>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="nav__desktop">
@@ -248,13 +280,17 @@ function Header(props) {
               onMouseEnter={() => setMenuDrop(true)}
               onMouseLeave={() => setMenuDrop(false)}
             >
-              <NavLink to="/sofa">
+              <NavLink to="/collections/sofa-ghe">
                 Sofa - Ghế thư giản <i class="uil uil-angle-down"></i>
               </NavLink>
 
               <div className="dropdownContent">
-                <NavLink className="dropdownItem">Sofa</NavLink>
-                <NavLink className="dropdownItem">Ghế thư giản</NavLink>
+                <NavLink className="dropdownItem" to="/collections/sofa">
+                  Sofa
+                </NavLink>
+                <NavLink className="dropdownItem" to="/collections/ghe">
+                  Ghế thư giản
+                </NavLink>
               </div>
             </li>
             <li
@@ -262,7 +298,7 @@ function Header(props) {
               onMouseEnter={() => setMenuDrop(true)}
               onMouseLeave={() => setMenuDrop(false)}
             >
-              <NavLink to="/ban">
+              <NavLink to="/collections/ban">
                 Bàn <i class="uil uil-angle-down"></i>
               </NavLink>
 
@@ -278,14 +314,13 @@ function Header(props) {
               onMouseEnter={() => setMenuDrop(true)}
               onMouseLeave={() => setMenuDrop(false)}
             >
-              <NavLink to="/ghe">
-                Ghế <i class="uil uil-angle-down"></i>
+              <NavLink to="/collections/giuong">
+                Giường <i class="uil uil-angle-down"></i>
               </NavLink>
 
               <div className="dropdownContent">
-                <NavLink className="dropdownItem">Ghế dài</NavLink>
-                <NavLink className="dropdownItem">Ghế làm việc</NavLink>
-                <NavLink className="dropdownItem">Ghế ăn</NavLink>
+                <NavLink className="dropdownItem">Giường nệm</NavLink>
+                <NavLink className="dropdownItem">Niệm</NavLink>
               </div>
             </li>
             {nav__links.map((item, index) => {

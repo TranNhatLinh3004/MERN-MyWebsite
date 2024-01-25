@@ -90,7 +90,7 @@ function Login(props) {
                  mb-4
                 "
                 >
-                  Login
+                  Đăng nhập
                 </h3>
 
                 <FormGroup className="form__group">

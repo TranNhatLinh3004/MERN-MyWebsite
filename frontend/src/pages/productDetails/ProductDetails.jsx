@@ -8,7 +8,7 @@ import { Container, Row, Col, NavLink } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
 
 import { useDispatch } from "react-redux";
-// import { cartActives } from "../../redux/slices/cartSlice";
+import { cartActives } from "../../redux/slices/cartSlice";
 import Helmet from "../../assets/helmet/Helmet";
 import ProductsList from "../../components/UI/producslist/ProductsList";
 function ProductDetails(props) {
@@ -45,6 +45,7 @@ function ProductDetails(props) {
   const reviewMsg = useRef("");
   const dispatch = useDispatch();
   const { id } = useParams();
+
   const product = products.find((product) => product.id === id);
 
   console.log(product);
@@ -99,17 +100,16 @@ function ProductDetails(props) {
     console.log(reviewUserValue, reviewMsgValue, rating);
   };
   const addToCart = () => {
-    // dispatch(
-    //   cartActives.addItem({
-    //     id,
-    //     productName,
-    //     imgUrl,
-    //     price,
-    //     quantity,
-    //   })
-    // );
-    // toast.success("Item added to cart");
-    // alert(props.item.id);
+    dispatch(
+      cartActives.addItem({
+        id,
+        productName,
+        imgUrl,
+        price,
+        quantity,
+      })
+    );
+    toast.success("Đã thêm vào giỏ thành công!");
   };
 
   const [currentImage, setCurrentImage] = useState(imgUrl);

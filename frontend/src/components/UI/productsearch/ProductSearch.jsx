@@ -14,7 +14,7 @@ function ProductSearch(props) {
     const originalPrice = salePrice / (1 - discountDecimal);
 
     // Làm tròn giá gốc về 2 chữ số thập phân (nếu cần)
-    const roundedOriginalPrice = Math.round(originalPrice * 100) / 100;
+    const roundedOriginalPrice = Math.round(originalPrice * 1) / 1;
 
     return roundedOriginalPrice;
   }

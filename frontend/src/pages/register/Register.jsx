@@ -97,7 +97,7 @@ function Register(props) {
                  mb-4
                 "
                 >
-                  Register
+                  Đăng Ký
                 </h3>
                 <FormGroup className="form__group image">
                   <label class="avatar" for="file">
